@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}My Library - MatrixRealm{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">My Game Library</h1>
+
+{% if games %}
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    {% for game in games %}
+    <div class="col">
+        <div class="card game-card h-100">
+            {% if game.background_image %}
+            <img src="{{ game.background_image }}" class="card-img-top" alt="{{ game.name }}">
+            {% else %}
+            <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                <span>No Image Available</span>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ game.name }}</h5>
+                <p class="card-text">
+                    <small class="text-muted">Released: {{ game.released or 'TBA' }}</small>
+                </p>
+                <div class="mb-2">
+                    {% for genre in game.genres[:3] %}
+                    <span class="badge bg-secondary">{{ genre.name }}</span>
+                    {% endfor %}
+                </div>
+                <a href="{{ url_for('game_detail', game_id=game.id) }}" class="btn btn-sm btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-info">
+    <p>Your library is empty. Browse games and add them to your library!</p>
+    <a href="{{ url_for('catalog') }}" class="btn btn-primary mt-2">Browse Games</a>
+</div>
+{% endif %}
+{% endblock %}
