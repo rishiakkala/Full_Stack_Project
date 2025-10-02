@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile - MatrixRealm{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Profile Information</h4>
+            </div>
+            <div class="card-body">
+                <h5>{{ user.username }}</h5>
+                <p class="text-muted">{{ user.email }}</p>
+                <p>Member since: {{ user.created_at.strftime('%B %d, %Y') }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Game Collection</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3">
+                                <i class="fas fa-heart fa-2x text-danger"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Wishlist</h5>
+                                <p class="mb-0">{{ wishlist_count }} games</p>
+                                <a href="{{ url_for('wishlist') }}" class="btn btn-sm btn-outline-primary mt-2">View Wishlist</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="me-3">
+                                <i class="fas fa-gamepad fa-2x text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">Library</h5>
+                                <p class="mb-0">{{ library_count }} games</p>
+                                <a href="{{ url_for('library') }}" class="btn btn-sm btn-outline-primary mt-2">View Library</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Account Settings</h4>
+            </div>
+            <div class="card-body">
+                <p>Change your account settings here.</p>
+                <a href="#" class="btn btn-outline-primary">Change Password</a>
+                <a href="#" class="btn btn-outline-danger">Delete Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+{% endblock %}
