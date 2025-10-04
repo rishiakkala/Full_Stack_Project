@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}Game Catalog - MatrixRealm{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Game Catalog</h1>
+
+<!-- Filter Options -->
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ url_for('catalog') }}" method="get" class="row g-3">
+                    <div class="col-md-4">
+                        <label for="genre" class="form-label">Genre</label>
+                        <select class="form-select" id="genre" name="genre">
+                            <option value="">All Genres</option>
+                            {% for genre in genres %}
+                            <option value="{{ genre.id }}" {% if request.args.get('genre') == genre.id|string %}selected{% endif %}>
+                                {{ genre.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="ordering" class="form-label">Sort By</label>
+                        <select class="form-select" id="ordering" name="ordering">
+                            <option value="-added" {% if request.args.get('ordering') == '-added' %}selected{% endif %}>Newest</option>
+                            <option value="-rating" {% if request.args.get('ordering') == '-rating' %}selected{% endif %}>Top Rated</option>
+                            <option value="-released" {% if request.args.get('ordering') == '-released' %}selected{% endif %}>Release Date</option>
+                            <option value="name" {% if request.args.get('ordering') == 'name' %}selected{% endif %}>Name (A-Z)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Games Grid -->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+    {% for game in games %}
+    <div class="col">
+        <div class="card game-card h-100">
+            {% if game.background_image %}
+            <img src="{{ game.background_image }}" class="card-img-top" alt="{{ game.name }}">
+            {% else %}
+            <div class="bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                <span>No Image Available</span>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ game.name }}</h5>
+                <p class="card-text">
+                    <small class="text-muted">Released: {{ game.released or 'TBA' }}</small>
+                </p>
+                <div class="mb-2">
+                    {% for genre in game.genres[:3] %}
+                    <span class="badge bg-secondary">{{ genre.name }}</span>
+                    {% endfor %}
+                </div>
+                <a href="{{ url_for('game_detail', game_id=game.id) }}" class="btn btn-sm btn-primary">View Details</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+<nav class="mt-4">
+    <ul class="pagination justify-content-center">
+        {% if prev_page %}
+        <li class="page-item">
+            <a class="page-link" href="{{ prev_page }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% endif %}
+        
+        <li class="page-item active"><a class="page-link" href="#">{{ request.args.get('page', 1) }}</a></li>
+        
+        {% if next_page %}
+        <li class="page-item">
+            <a class="page-link" href="{{ next_page }}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}
