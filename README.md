@@ -99,7 +99,7 @@ The application uses the RAWG Video Games Database API to fetch game data. The A
 ### Home Page
 The home page displays trending games, top-rated games, and allows browsing by genre.
 
-![Home Page Screenshot](static/img/screenshots/home.png)
+![Home Page Screenshot](static/img/home1.png)
 
 ### User Registration
 New users can create an account to save games to their wishlist and library.
