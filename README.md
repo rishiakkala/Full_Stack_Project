@@ -116,7 +116,7 @@ View comprehensive information about each game including description, platforms,
 ### Search and Filter
 Search for games by title and filter results by genre, platform, and other criteria.
 
-![Search Results Screenshot](static/img/search.png)
+![Search Results Screenshot](static/img/Search.png)
 
 ### Wishlist
 Save games to your wishlist for future reference.
