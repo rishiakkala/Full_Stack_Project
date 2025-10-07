@@ -99,35 +99,37 @@ The application uses the RAWG Video Games Database API to fetch game data. The A
 ### Home Page
 The home page displays trending games, top-rated games, and allows browsing by genre.
 
-![Home Page Screenshot](static/img/home1.png)
+![Home Page Screenshot](static/img/home.png)
 
 ### User Registration
 New users can create an account to save games to their wishlist and library.
 
-![Registration Page Screenshot](static/img/screenshots/register.png)
+![Registration Page Screenshot](static/img/Register.png)
+![Login Page Screenshot](static/img/Login.png)
 
 ### Game Details
 View comprehensive information about each game including description, platforms, ratings, and more.
 
-![Game Details Screenshot](static/img/screenshots/game_detail.png)
+![Game Details Screenshot1](static/img/detail1.png)
+![Game Details Screenshot2](static/img/detail2.png)
 
 ### Search and Filter
 Search for games by title and filter results by genre, platform, and other criteria.
 
-![Search Results Screenshot](static/img/screenshots/search.png)
+![Search Results Screenshot](static/img/search.png)
 
 ### Wishlist
 Save games to your wishlist for future reference.
 
-![Wishlist Screenshot](static/img/screenshots/wishlist.png)
+![Wishlist Screenshot](static/img/wishlist.png)
 
 ### Library
 Add games you own to your personal library.
 
-![Library Screenshot](static/img/screenshots/library.png)
+![Library Screenshot](static/img/library.png)
 
 ### User Profile
 View your account information and collection statistics.
 
-![Profile Screenshot](static/img/screenshots/profile.png)
+![Profile Screenshot](static/img/profile.png)
 
