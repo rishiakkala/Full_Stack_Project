@@ -18,7 +18,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 
 # RAWG API configuration
-RAWG_API_KEY = "62df77eb3a5d4b6bb60d4da27f735c56"  # Replace with your actual API key
+RAWG_API_KEY = "YOUR_API_KEY"  # Replace with your actual API key
 RAWG_BASE_URL = "https://api.rawg.io/api"
 
 # Helper function to fetch data from RAWG API
